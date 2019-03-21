@@ -5,7 +5,7 @@ public class peaklass_uus {
     public static void main(String[] args) {
 
         System.out.println("jou ");
-        // see on uus messenger ju
+        // kristina peab uued rühmakaaslased otsima vist
         System.out.println("1. loo klient"); //eraklient, äriklient?
         System.out.println("2. loo konto"); //tavaKaart, kuldKaart
         System.out.println("3. näita kliendiga seotud kaarte");
