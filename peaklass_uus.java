@@ -4,7 +4,7 @@ import java.util.*;
 public class peaklass_uus {
     public static void main(String[] args) {
 
-        System.out.println("jou");
+        System.out.println("jou ");
 
         System.out.println("1. loo klient"); //eraklient, äriklient?
         System.out.println("2. loo konto"); //tavaKaart, kuldKaart
