@@ -3,7 +3,7 @@ import java.util.*;
 @SuppressWarnings("Duplicates")
 public class peaklass_uus {
     public static void main(String[] args) {
-
+            //kristina on pd aga ta seda ei näe
         System.out.println("1. loo klient"); //eraklient, äriklient?
         System.out.println("2. loo konto"); //tavaKaart, kuldKaart
         System.out.println("3. näita kliendiga seotud kaarte");
