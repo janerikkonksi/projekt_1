@@ -59,8 +59,8 @@ public class peaklass_uus {
                         System.out.println("Teie kliendinumber on " + rand);
                         System.out.println("Jäta oma kliendinumber meelde!");
                         klientide_list.add(uus_klient);
-                        System.out.println("Sisesta järgmine tegevus: ");
-                        i = scan.nextInt();
+                        //System.out.println("Sisesta järgmine tegevus: ");
+                        //i = scan.nextInt();
                     }
                 }
             }
@@ -174,6 +174,9 @@ public class peaklass_uus {
                     for (kaardid a : salvesta_kaardid) {
                         System.out.println(a.getTehingud());
                     }
+                    for (kaardid a : salvesta_kaardid) {
+                        System.out.println(a);
+                    }
                     for (Klient b : klientide_list) {
                         System.out.println(b);
                     }
@@ -190,3 +193,7 @@ public class peaklass_uus {
     }
 }
 
+/// while True:
+//     proovi küsida arvu
+//      kui ebaõnnestub, siis teatame
+//     kui õnnestub, peatame tsükli : break
