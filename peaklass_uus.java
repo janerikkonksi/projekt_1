@@ -36,7 +36,7 @@ public class peaklass_uus {
 
             if (i == 1) {
                 try { //see try and except veits paneb näkku siin
-                    System.out.println("Sisesta nimi ning isikukood (tühik vahele) ");
+                    System.out.println("Sisesta nimi ning isikukood (tühik vahele) "); //see kliendinumber tuleb meelde jätta, selle järgi saab ülekandeid teha, kaarte lisada jne
                     Scanner scan_kliendiandmed = new Scanner(System.in);
                     String a = scan_kliendiandmed.nextLine();
                     String[] tükelda = a.split(" ");
@@ -58,6 +58,7 @@ public class peaklass_uus {
                             salvesta_kliendinumbrid.add(rand);
                             Klient uus_klient = new Klient(nimi, isikukood, rand);
                             System.out.println("Teie kliendinumber on " + rand);
+                            System.out.println("Jäta oma kliendinumber meelde!");
                             klientide_list.add(uus_klient);
                             System.out.println("Sisesta järgmine tegevus: ");
                             i = scan.nextInt();
