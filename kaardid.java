@@ -1,3 +1,5 @@
+import java.util.List;
+
 public interface kaardid {
     String prindiKaardid() ;
 
@@ -10,4 +12,6 @@ public interface kaardid {
     void teosteÜlekanneSuurenda(Klient klient, double summa);
 
     double getSaldo();
+
+    List<String> getTehingud() ;
 }

@@ -57,6 +57,10 @@ public class tavaKaart implements kaardid{
         return 0.1 * tehingud.size();
     }
 
+    public List<String> getTehingud() {
+        return tehingud;
+    }
+
     @Override
     public String toString() {
         return nimi + " " + saldo;

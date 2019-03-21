@@ -172,16 +172,17 @@ public class peaklass_uus {
                 }
                 if (i == 6) { //panin lihtsalt, et kontrollida kas kontojäägid muutusid
                     for (kaardid a : salvesta_kaardid) {
-                        System.out.println(a);
+                        System.out.println(a.getTehingud());
                     }
-                    System.out.println("Sisesta järgmine tegevus: ");
-                    i = scan.nextInt();
+                    for (Klient b : klientide_list) {
+                        System.out.println(b);
+                    }
+
                 }
             } catch (Exception e)    {
-                tulemus = false;
-            }
-            if (!tulemus) {
                 System.out.println("Midagi läks valesti");
+            }
+            finally {
                 System.out.println("Sisesta järgmine tegevus: ");
                 i = scan.nextInt();
             }
