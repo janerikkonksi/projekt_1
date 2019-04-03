@@ -8,10 +8,9 @@ public class tavaKaart implements kaardid{
     private String nimi;
     private int kliendinumber;
     private Klient klient;
-
     private List<String> tehingud = new ArrayList<>();
 
-
+    ///// KONSTRUKTOR /////
     public tavaKaart(double saldo, Klient klient) {
         this.klient = klient;
         isikukood = klient.getIsikukood();
@@ -20,12 +19,17 @@ public class tavaKaart implements kaardid{
         nimi = klient.getNimi();
     }
 
+    ///// GETTERID /////
     public int getKliendinumber() {
         return kliendinumber;
     }
 
     public Klient getKlient() {
         return klient;
+    }
+
+    public List<String> getTehingud() {
+        return tehingud;
     }
 
     @Override
@@ -38,32 +42,24 @@ public class tavaKaart implements kaardid{
         return "Teil on tavakaart";
     }
 
-    public void teostaÜlekanne(Klient klient,double summa) {
-        saldo -= summa;
-        tehingud.add("Ülekanne kontolt " + nimi + ", kontole " + klient.getNimi() + ", summa: " + summa);
-        System.out.println("Ülekanne kontolt " + nimi + ", kontole " + klient.getNimi() + ", summa: " + summa);
-
-    }
-
-    public void teosteÜlekanneSuurenda(Klient klient,double summa) {
-        saldo += summa;
-        tehingud.add("Laekumine kontole " + nimi + ", kontolt " + klient.getNimi() + ", summa: "+ summa);
-        System.out.println("Laekumine kontole " + nimi + ", kontolt " + klient.getNimi() + ", summa: "+ summa);
-
-    }
-
-    public double arvutaTehinguTasud() {
-
-        return 0.1 * tehingud.size();
-    }
-
-    public List<String> getTehingud() {
-        return tehingud;
-    }
-
     @Override
     public String toString() {
         return nimi + " " + saldo;
+    }
+
+
+    public void teostaÜlekanne(Klient klient,double summa) {
+        saldo -= summa;     //kaardi saldo vähendamine
+        klient.vähendaSaldot(summa);    //kliendi saldo vähendamine
+        tehingud.add("Ülekanne kontolt " + nimi + ", kontole " + klient.getNimi() + ", summa: " + summa);
+        System.out.println("Ülekanne kontolt " + nimi + ", kontole " + klient.getNimi() + ", summa: " + summa);
+    }
+
+    public void teostaÜlekanneSuurenda(Klient klient,double summa) {
+        saldo += summa;     //kaardi saldo suurendamine
+        klient.suurendaSaldot(summa);   //kliendi saldo suurendamine
+        tehingud.add("Laekumine kontole " + nimi + ", kontolt " + klient.getNimi() + ", summa: "+ summa);
+        System.out.println("Laekumine kontole " + nimi + ", kontolt " + klient.getNimi() + ", summa: "+ summa);
     }
 
 

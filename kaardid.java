@@ -1,6 +1,7 @@
 import java.util.List;
 
 public interface kaardid {
+
     String prindiKaardid() ;
 
     void teostaÜlekanne(Klient klient, double summa) ;
@@ -9,7 +10,7 @@ public interface kaardid {
 
     Klient getKlient();
 
-    void teosteÜlekanneSuurenda(Klient klient, double summa);
+    void teostaÜlekanneSuurenda(Klient klient, double summa);
 
     double getSaldo();
 
