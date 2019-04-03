@@ -35,6 +35,14 @@ public class Klient implements Comparable<Klient>  {
         return kliendinumber;
     }
 
+    public List<tavaKaart> getTavakaardid() {
+        return tavakaardid;
+    }
+
+    public List<kuldKaart> getKuldkaardid() {
+        return kuldkaardid;
+    }
+
     public double getSaldo() {
         return saldo;
     }

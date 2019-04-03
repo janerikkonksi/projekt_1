@@ -14,13 +14,17 @@ public class Pank{
     public Pank() {
     }
 
+    public List<kaardid> getSalvesta_kaardid() {
+        return salvesta_kaardid;
+    }
+
     ///////////////////////////////////////////////////////////////
     //                         TEGEVUSED                         //
     ///////////////////////////////////////////////////////////////
 
-
+    // 112.
     // väljastab ekraanile võimalikud tegevused
-    public static void näita_tegevusi() {
+    public static void näita_tegevusi() throws InterruptedException {
         System.out.println("Valitavad tegevused:");
         System.out.println("\t1. loo klient"); //eraklient, äriklient?
         System.out.println("\t2. loo konto"); //  tavaKaart, kuldKaart
@@ -29,16 +33,17 @@ public class Pank{
         System.out.println("\t5. saada raha teisele kliendile");
         //teen siiani ise
 
-        System.out.println("\t6. järjesta kliendid raha järgi");
-        System.out.println("\t7. sularaha automaat"); //a) võta raha välja, vähenda lic, b) vaata kontojääki, c) näita tehinguid
+        System.out.println("\t6. järjesta kliendid saldo järgi");
+        System.out.println("\t7. sularahaautomaat");
         System.out.println("\t8. näita kliendi andmeid");
-        System.out.println("\t9. kustuta klient");
+        System.out.println("\t9. eemalda klient");
         System.out.println("\t10. lõpeta töö");
         System.out.println("\t112. näita tegevusi");
+        Thread.sleep(1000);
         //ja mis iganes asjad veel
     }
 
-
+    // 1.
     // loob uue kliendi sisendina saadud nimest ja isikukoodist
     public void loo_klient() {
         System.out.println("Sisesta nimi ning isikukood (tühik vahele) "); //see kliendinumber tuleb meelde jätta, selle järgi saab ülekandeid teha, kaarte lisada jne
@@ -67,14 +72,14 @@ public class Pank{
         }
     }
 
-
+    // 2.
     // loob kliendile uue kaardi
     public void lisa_kaart() {
 
         if (klientide_list.size() != 0) {
             System.out.println("Millist kaarti soovite luua?");
-            System.out.println("1. Tavakaart");
-            System.out.println("2. Kuldkaart");
+            System.out.println("\t1. Tavakaart");
+            System.out.println("\t2. Kuldkaart");
             Scanner vastus = new Scanner(System.in);
             int m = vastus.nextInt();
             System.out.println("Sisesta oma kliendinumber, et lisada sellele inimesele kaart");
@@ -106,7 +111,7 @@ public class Pank{
         }
     }
 
-
+    // 3.
     // väljastab antud kliendi kõik kaardid
     public  void vaata_kaarte() {
         System.out.println("Sisesta kliendinumber, et näha oma kaarte: ");
@@ -129,7 +134,7 @@ public class Pank{
         }
     }
 
-
+    // 4.
     // väljastab ekraanile klientide listi tähestikulises järjekorras
     public  void vaata_kliente() {
         Collections.sort(klientide_list);
@@ -137,9 +142,9 @@ public class Pank{
         System.out.println(klientide_list);
     }
 
-
+    // 5.
     // teostab ülekande kahe kliendi vahel
-    public  void ülekanne(){
+    public void ülekanne(){
         Scanner sisend = new Scanner(System.in);
         System.out.println("Sisesta oma kliendinumber:");
         int saatja = sisend.nextInt();
@@ -156,13 +161,15 @@ public class Pank{
             for (int o = 0; o < salvesta_kaardid.size(); o++) {
                 if (salvesta_kaardid.get(o).getKliendinumber() == saatja) {
                     salvesta_saatja = o;
-                } else if (salvesta_kaardid.get(o).getKliendinumber() == saaja) {
+                }
+                else if (salvesta_kaardid.get(o).getKliendinumber() == saaja) {
                     salvesta_saaja = o;
                 }
             }
             if (salvesta_kaardid.get(salvesta_saatja).getSaldo() < saadetav_summa) {
                 System.out.println("Kaardil pole sellise summa saatmiseks piisavalt raha.");
-            } else {
+            }
+            else {
                 Klient saatja_isend = salvesta_kaardid.get(salvesta_saatja).getKlient();
                 Klient saaja_isend = salvesta_kaardid.get(salvesta_saaja).getKlient();
                 salvesta_kaardid.get(salvesta_saatja).teostaÜlekanne(saaja_isend, saadetav_summa);
@@ -175,9 +182,9 @@ public class Pank{
 
     }
 
-
+    // 6.
     // väljastab midagi
-    public  void kliendid_saldo_järgi() {
+    public void kliendid_saldo_järgi() {
         for (kaardid a : salvesta_kaardid) {
             System.out.println(a.getTehingud());
         }
@@ -189,7 +196,27 @@ public class Pank{
         }
     }
 
+    // 8.
+    // väljastab kliendiga seotud andmed
+    public void kliendi_andmed(){
+        Scanner sisend = new Scanner(System.in);
+        System.out.println("Sisesta oma kliendinumber:");
+        int kliendi_nr = sisend.nextInt();
+        Klient klient = otsi_klient(kliendi_nr);
+        System.out.println(klient.toString());
+    }
 
+
+
+    // otsib klientide listist vastava kliendinumbriga kliendi välja
+    public Klient otsi_klient(int kliendi_nr){
+        Klient otsitav_klient = new Klient("","",0);
+        for(Klient klient : klientide_list){
+            if(klient.getKliendinumber()==kliendi_nr){
+                otsitav_klient=klient;
+            }
+        }
+       return otsitav_klient;
+    }
 
 }
-
