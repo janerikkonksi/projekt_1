@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.util.*;
 @SuppressWarnings("Duplicates")
 
-public class peaklass_uus extends Pank{
+public class peaklass_uus extends Pank {
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -12,9 +12,12 @@ public class peaklass_uus extends Pank{
         // klassi 'Sularahaautomaat' isend, mille kaudu saab teha sularahaautomaadiga seotud tegevusi
         Sularahaautomaat sularahaautomaat = new Sularahaautomaat(pank);
 
+        Investeerimine investeerimine = new Investeerimine(pank);
+
         // listid võimalike tegevuste numbritega
-        ArrayList<Integer> tegevused_pank = new ArrayList<Integer>(Arrays.asList(1,2,3,4,5,6,7,8,9,10,112));
-        ArrayList<Integer> tegevused_sularahaautomaat = new ArrayList<Integer>(Arrays.asList(1,2,3,4));
+        ArrayList<Integer> tegevused_pank = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 112));
+        ArrayList<Integer> tegevused_sularahaautomaat = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4));
+        ArrayList<Integer> tegevused_investeerimine = new ArrayList<Integer>(Arrays.asList(1, 2, 3));
 
 
         // väljastab ekraanile valitavad tegevused
@@ -25,28 +28,21 @@ public class peaklass_uus extends Pank{
             int tegevus = küsiarvu(tegevused_pank);    // laseb kasutajal sisestada uue tegevuse numbri
 
             ////// TEGEVUSED //////
-            if (tegevus == 112){        // väljastab ekraanile võimalikud tegevused
+            if (tegevus == 112) {        // väljastab ekraanile võimalikud tegevused
                 näita_tegevusi();
-            }
-            else if (tegevus == 1) {    // loob uue kliendi sisendina saadud nimest ja isikukoodist
+            } else if (tegevus == 1) {    // loob uue kliendi sisendina saadud nimest ja isikukoodist
                 pank.loo_klient();
-            }
-            else if (tegevus == 2) {    // loob kliendile uue kaardi
+            } else if (tegevus == 2) {    // loob kliendile uue kaardi
                 pank.lisa_kaart();
-            }
-            else if (tegevus == 3) {    // loob kliendile uue kaardi
+            } else if (tegevus == 3) {    // loob kliendile uue kaardi
                 pank.vaata_kaarte();
-            }
-            else if (tegevus == 4) {    // väljastab ekraanile klientide listi tähestikulises järjekorras
+            } else if (tegevus == 4) {    // väljastab ekraanile klientide listi tähestikulises järjekorras
                 pank.vaata_kliente();
-            }
-            else if (tegevus == 5) {    // teostab ülekande kahe kliendi vahel
+            } else if (tegevus == 5) {    // teostab ülekande kahe kliendi vahel
                 pank.ülekanne();
-            }
-            else if (tegevus == 6) {    //panin lihtsalt, et kontrollida kas kontojäägid muutusid
+            } else if (tegevus == 6) {    //panin lihtsalt, et kontrollida kas kontojäägid muutusid
                 pank.kliendid_saldo_järgi();
-            }
-            else if (tegevus == 7) {     // imiteerib sularahaautomaati
+            } else if (tegevus == 7) {     // imiteerib sularahaautomaati
                 sularahaautomaat.sisesta_Kliendinumber();   // küsib kliendinumbri
                 if (pank.salvesta_kliendinumbrid.contains(sularahaautomaat.kliendinumber)) {
                     while (true) {
@@ -68,16 +64,36 @@ public class peaklass_uus extends Pank{
                         }
                     }
                 }
-            }
-            else if (tegevus == 8){
+            } else if (tegevus == 8) {
                 pank.kliendi_andmed();
-            }
-            else if (tegevus == 10){    // programm lõpetab töö
+            } else if (tegevus == 10) {
+                investeerimine.sisesta_Kliendinumber();
+                if (pank.salvesta_kliendinumbrid.contains(investeerimine.kliendinumber)) {
+                    while (true) {
+                        investeerimine.võimalused();
+                        int tegevus3 = küsiarvu(tegevused_investeerimine);
+                        if (tegevus3 == 1) {
+                            investeerimine.kontojääk();
+                        } else if (tegevus3 == 2) {
+                            investeerimine.investeering();
+                        } else if (tegevus3 == 3) {
+                            investeerimine.eemalda_kliendinumber();
+                            System.out.println("Investeerimine on lõppenud");
+                            System.out.println();
+                            Thread.sleep(1000);
+                            näita_tegevusi();
+                            break;
+                        }
+                    }
+                }
+
+            } else if (tegevus == 11) {    // programm lõpetab töö
                 System.out.println("Programm lõpetab töö.");
                 return;
             }
         }
     }
+
 
 
     // laseb kasutajal sisestada uue tegevuse numbri

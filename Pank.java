@@ -37,7 +37,8 @@ public class Pank{
         System.out.println("\t7. sularahaautomaat");
         System.out.println("\t8. näita kliendi andmeid");
         System.out.println("\t9. eemalda klient");
-        System.out.println("\t10. lõpeta töö");
+        System.out.println("\t10. investeeri");
+        System.out.println("\t11. lõpeta töö");
         System.out.println("\t112. näita tegevusi");
         Thread.sleep(1000);
         //ja mis iganes asjad veel
