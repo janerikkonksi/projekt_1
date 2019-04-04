@@ -85,7 +85,7 @@ class Investeerimine{
                 System.out.println("Teie uus kontojääk on: " + klient.getSaldo());
             }
             if(klient.getSaldo()<0){
-                System.out.println("Teie kontol vahendid puuduvad");
+                System.out.println("Teie kontol vahendid puuduvad ");
             }
 
         }
