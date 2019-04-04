@@ -186,15 +186,17 @@ public class Pank{
     // 6.
     // väljastab midagi
     public void kliendid_saldo_järgi() {
-        for (kaardid a : salvesta_kaardid) {
+        /*for (kaardid a : salvesta_kaardid) {
             System.out.println(a.getTehingud());
-        }
+        }*/
         for (kaardid a : salvesta_kaardid) {
             System.out.println(a);
         }
+        /*
         for (Klient b : klientide_list) {
             System.out.println(b);
         }
+        */
     }
 
     // 8.
